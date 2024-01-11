@@ -16,15 +16,7 @@ export default function LoginPage() {
 
   return (
     <Card sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', background: 'LightGray' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-        <img src="/src/logo.svg" alt=" Gif" style={{ width: '100%', maxHeight: '200px', objectFit: 'contain' }} />
-                
-        </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          
-        </Box>
-      </Box>
+      
       <Box sx={{ display: 'flex', flexDirection: 'column', background: 'gray'}}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h4">
