@@ -53,7 +53,7 @@ const Login = () => {
               }}
             />
            <Box sx={{ textAlign: 'right', mt: 1 }}>
-  <Link href="#underline" underline="none" sx={{ fontSize: '18px' }}>
+  <Link href="/resetPassword" underline="none" sx={{ fontSize: '18px' }}>
     Reset Password
   </Link>
 </Box>
@@ -64,7 +64,7 @@ const Login = () => {
               <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="body1">Don't have an account yet?</Typography>
+              <Typography variant="body1" color="gray">Don't have an account yet?</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Box sx={{ ml: 2 }}>
                 <Link href="/signup" underline="none">
