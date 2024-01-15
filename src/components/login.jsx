@@ -1,5 +1,5 @@
-import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment } from "@mui/material";
-import React from "react";
+import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment,ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import React, { useState } from "react";
 import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
@@ -8,12 +8,25 @@ import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom
 import Signup from "./signup";
 
 const Login = () => {
+  const [darkMode, setDarkMode] = useState(false);
   const handleGoogleSignIn = () => {
     window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX'; 
   };
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
  
   return (
-    <Grid container justifyContent="center">
+    <ThemeProvider theme={theme} >
+    <CssBaseline />
+    <Grid container justifyContent="center" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }} >
       <Paper elevation={10} style={paperStyle}>
         <Grid container spacing={2} >
           <Grid item xs={6} >
@@ -78,6 +91,12 @@ const Login = () => {
         </Grid>
       </Paper>
     </Grid>
+    <Box sx={{ position: 'absolute', bottom: 26, left: 26 }}>
+        <Button onClick={toggleDarkMode}>
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </Button>
+      </Box>
+    </ThemeProvider>
   );
 }
 
