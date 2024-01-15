@@ -17,7 +17,7 @@ const Signup = () => {
           <Grid item xs={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
           <Box sx={{ textAlign: 'center', mt: 1 }}>
             <Typography variant="h3" sx={{mb: 2}}>Join us</Typography>
-            <Typography variant="h6" color="gray">and start coding now</Typography>
+            <Typography variant="h5" color="gray">and start coding now</Typography>
             </Box>
             <TextField
               label='Email Address'
@@ -47,12 +47,22 @@ const Signup = () => {
                 ),
               }}
             />
-           <Box sx={{ textAlign: 'right', mt: 1 }}>
-  <Link href="#underline" underline="none" sx={{ fontSize: '18px' }}>
-    Reset Password
-  </Link>
-</Box>
-            <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 5, mb: 1, height: '60px' , fontSize: '15px'}}>
+            <TextField
+              label='Repeat Password'
+              placeholder="Password"
+              type='password'
+              fullWidth
+              sx={{ mb: 1 }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <LockOpenOutlinedIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          
+            <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 4, mb: 5, height: '60px' , fontSize: '15px'}}>
               Create Account
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
