@@ -53,7 +53,7 @@ const Login = () => {
               }}
             />
            <Box sx={{ textAlign: 'right', mt: 1 }}>
-  <Link href="#underline" underline="none" sx={{ fontSize: '18px' }}>
+  <Link href="/resetPassword" underline="none" sx={{ fontSize: '18px' }}>
     Reset Password
   </Link>
 </Box>
