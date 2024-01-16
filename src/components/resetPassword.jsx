@@ -12,7 +12,7 @@ const ResetPassword = () => {
       <Paper elevation={10} style={paperStyle}>
         <Grid container spacing={2} >
           <Grid item xs={6} >
-            <img src='/image/dev2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
+            <img src='/image/gif2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
           </Grid>
           <Grid item xs={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
           <Box sx={{ textAlign: 'center', mt: 1 }}>
@@ -33,7 +33,6 @@ const ResetPassword = () => {
                 ),
               }}
             />
-          
             <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 4, mb: 5, height: '60px' , fontSize: '15px'}}>
               Reset Password
             </Button>
