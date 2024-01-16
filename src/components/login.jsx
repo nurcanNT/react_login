@@ -27,11 +27,11 @@ const Login = () => {
     <ThemeProvider theme={theme} >
     <CssBaseline />
     <Grid container justifyContent="center" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }} >
-      <Paper elevation={10} style={paperStyle}>
-        <Grid container spacing={2} >
-          <Grid item xs={6} >
-            <img src='/image/dev2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
-          </Grid>
+  <Paper elevation={10} style={paperStyle}>
+    <Grid container spacing={2} >
+      <Grid item xs={6} >
+        <img src='/image/dev2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
+      </Grid>
           <Grid item xs={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
           <Box sx={{ textAlign: 'center', mt: 1 }}>
             <Typography variant="h3" sx={{mb: 2}}>Hello again!</Typography>
@@ -90,13 +90,13 @@ const Login = () => {
           </Grid>
         </Grid>
       </Paper>
-    </Grid>
-    <Box sx={{ position: 'absolute', bottom: 26, left: 26 }}>
-        <Button onClick={toggleDarkMode}>
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </Button>
-      </Box>
-    </ThemeProvider>
+</Grid>
+      <Box sx={{ position: 'absolute', bottom: 26, left: 26 }}>
+    <Button onClick={toggleDarkMode}>
+      {darkMode ? "Light Mode" : "Dark Mode"}
+    </Button>
+  </Box>
+        </ThemeProvider>
   );
 }
 

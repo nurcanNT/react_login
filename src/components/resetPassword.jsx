@@ -10,14 +10,14 @@ const ResetPassword = () => {
   return (
     <Grid container justifyContent="center">
       <Paper elevation={10} style={paperStyle}>
-        <Grid container spacing={2} >
-          <Grid item xs={6} >
-            <img src='/image/gif2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
+        <Grid container  justifyContent="center" alignItems="center" spacing={2} >
+          <Grid item xs={12} sm={6}>
+            <img src='/image/gif2.gif'  alt="Colorful abstract painting" style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', }} />
           </Grid>
-          <Grid item xs={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
-          <Box sx={{ textAlign: 'center', mt: 1 }}>
-            <Typography variant="h3" sx={{mb: 2}}>Forgot your password?</Typography>
-            <Typography variant="h6" color="gray">We'll send you a link to reset it</Typography>
+          <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
+            <Box sx={{ textAlign: 'center', mt: 1 }}>
+              <Typography variant="h3" sx={{mb: 2}}>Forgot your password?</Typography>
+              <Typography variant="h6" color="gray">We'll send you a link to reset it</Typography>
             </Box>
             <TextField
               label='Email Address'
@@ -40,7 +40,7 @@ const ResetPassword = () => {
               <Typography variant="body1" color="gray">Already have an account?</Typography>
               <Box sx={{ ml: 2 }}>
                 <Link href="/login" underline="none">
-                Log in
+                  Log in
                 </Link>
               </Box>
             </Box>
