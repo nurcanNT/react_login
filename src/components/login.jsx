@@ -1,4 +1,4 @@
-import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment, ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment,CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import React, { useState } from "react";
 import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
@@ -27,23 +27,22 @@ const Login = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid container justifyContent="center" alignItems="center" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }} >
-        <Paper elevation={10} style={{...paperStyle,}}>
-          <Grid container spacing={2} >
+    <Grid container justifyContent="center"  alignItems="center" sx={{mt:9}}>
+        <Paper elevation={10} style={paperStyle}>
+          <Grid container  justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs={12} sm={6}>
-              <img src='/image/dev2.gif' alt="Colorful abstract painting" style={{ width: '100%', height: '60vh', objectFit: 'cover', borderRadius: '230px' }} />
+              <img src='/image/dev2.gif' alt="Colorful abstract painting"style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', }} />
             </Grid>
             <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'}}>
-              <Box sx={{ textAlign: 'center'}}>
+              <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="h3" sx={{ mb: 2 }}>Hello again!</Typography>
-                <Typography variant="h6" color="gray">It's great to have you back</Typography>
+                <Typography variant="h6" color="gray" sx={{mb: 3}}>It's great to have you back</Typography>
               </Box>
               <TextField
                 label='Email Address'
                 placeholder="Email address"
                 type='email'
                 fullWidth
-                sx={{ mt: 5 }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -79,24 +78,23 @@ const Login = () => {
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography variant="body1" color="gray">Don't have an account yet?</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                
                   <Box sx={{ ml: 2 }}>
                     <Link component={RouterLink} to="/signup" underline="none">
                       Sign up
                     </Link>
                   </Box>
                 </Box>
-              </Box>
             </Grid>
           </Grid>
         </Paper>
-        <Box sx={{ position: 'absolute', bottom: 26, left: 26 }}>
+        <Box sx={{ position: 'absolute',top: '20px' }}>
           <Button onClick={toggleDarkMode}>
             {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Box>
       </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
   );
 }
 
