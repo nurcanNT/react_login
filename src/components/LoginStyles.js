@@ -1,6 +1,6 @@
 export const paperStyle = {
   padding: 50,
-  height: '70vh',
+  height: '80vh',
   width: 1000,
   margin: '30px auto',
   borderRadius: '250px',
