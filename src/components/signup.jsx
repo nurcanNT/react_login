@@ -1,14 +1,28 @@
-import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment } from "@mui/material";
-import React from "react";
+import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import React, { useState } from "react";
 import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import { paperStyle, gridStyle } from "./LoginStyles";
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Signup = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
  
   return (
-    <Grid container justifyContent="center">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+    <Grid container justifyContent="center" alignItems="center" sx={{mt:9}}>
       <Paper elevation={10} style={paperStyle}>
       <Grid container  justifyContent="center" alignItems="center" spacing={2} >
           <Grid item xs={12} sm={6}>
@@ -76,7 +90,13 @@ const Signup = () => {
           </Grid>
         </Grid>
       </Paper>
+      <Box sx={{ position: 'absolute',top: '20px' }}>
+          <Button onClick={toggleDarkMode}>
+          <SettingsBrightnessIcon sx={{mr:0.5}}/>{darkMode ? "Light Mode" : "Dark Mode"}
+          </Button>
+        </Box>
     </Grid>
+    </ThemeProvider>
   );
 }
 
