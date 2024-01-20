@@ -6,6 +6,7 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
 import Signup from "./signup";
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -91,7 +92,7 @@ const Login = () => {
         </Paper>
         <Box sx={{ position: 'absolute',top: '20px' }}>
           <Button onClick={toggleDarkMode}>
-            {darkMode ? "Light Mode" : "Dark Mode"}
+          <SettingsBrightnessIcon sx={{mr:0.5}}/> {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Box>
       </Grid>
