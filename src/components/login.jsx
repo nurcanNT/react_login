@@ -6,6 +6,7 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
 import Signup from "./signup";
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -68,7 +69,6 @@ const Login = () => {
               <Box sx={{ textAlign: 'right', mt: 1 }}>
                 <Link component={RouterLink} to="/resetPassword" underline="none" sx={{ fontSize: '18px' }}>
                   Reset Password
->>>>>>> a48490c42c221c58def1f98010b49f17a4360820
                 </Link>
               </Box>
               <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 5, mb: 1, height: '60px', fontSize: '15px' }}>
@@ -91,7 +91,8 @@ const Login = () => {
         </Paper>
         <Box sx={{ position: 'absolute',top: '20px' }}>
           <Button onClick={toggleDarkMode}>
-            {darkMode ? "Light Mode" : "Dark Mode"}
+          <SettingsBrightnessIcon sx={{mr:0.5}}/>
+{darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Box>
       </Grid>
