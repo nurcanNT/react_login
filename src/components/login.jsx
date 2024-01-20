@@ -68,6 +68,7 @@ const Login = () => {
               <Box sx={{ textAlign: 'right', mt: 1 }}>
                 <Link component={RouterLink} to="/resetPassword" underline="none" sx={{ fontSize: '18px' }}>
                   Reset Password
+>>>>>>> a48490c42c221c58def1f98010b49f17a4360820
                 </Link>
               </Box>
               <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 5, mb: 1, height: '60px', fontSize: '15px' }}>
