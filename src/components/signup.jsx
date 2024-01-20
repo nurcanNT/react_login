@@ -10,11 +10,11 @@ const Signup = () => {
   return (
     <Grid container justifyContent="center">
       <Paper elevation={10} style={paperStyle}>
-        <Grid container spacing={2} >
-          <Grid item xs={6} >
-            <img src='/image/dev2.gif'  alt="Colorful abstract painting" style={{ width: '100%', height: '70vh', objectFit: 'cover', borderRadius: '230px' }} />
+      <Grid container  justifyContent="center" alignItems="center" spacing={2} >
+          <Grid item xs={12} sm={6}>
+            <img src='/image/gif.gif'  alt="Colorful abstract painting"style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', }}  />
           </Grid>
-          <Grid item xs={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
+          <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'  }}>
           <Box sx={{ textAlign: 'center', mt: 1 }}>
             <Typography variant="h3" sx={{mb: 2}}>Join us</Typography>
             <Typography variant="h5" color="gray">and start coding now</Typography>
