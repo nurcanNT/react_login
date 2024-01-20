@@ -93,6 +93,7 @@ const Signup = () => {
       <Box sx={{ position: 'absolute',top: '20px' }}>
           <Button onClick={toggleDarkMode}>
           <SettingsBrightnessIcon sx={{mr:0.5}}/>{darkMode ? "Light Mode" : "Dark Mode"}
+          
           </Button>
         </Box>
     </Grid>
