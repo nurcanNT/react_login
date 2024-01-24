@@ -37,7 +37,7 @@ const Login = () => {
             <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'}}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="h3" sx={{ mb: 2 }}>Hello again!</Typography>
-                <Typography variant="h6" color="gray" sx={{mb: 3}}>It's great to have you back</Typography>
+                <Typography variant="h6" color="gray" sx={{mb: 3}}>It's great to have you back back</Typography>
               </Box>
               <TextField
                 label='Email Address'
