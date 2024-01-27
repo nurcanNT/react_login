@@ -32,7 +32,7 @@ const Login = () => {
         <Paper elevation={10} style={paperStyle}>
           <Grid container  justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs={12} sm={6}>
-              <img src='/image/dev2.gif' alt="Colorful abstract painting"style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', }} />
+              <img src='/image/dev2.gif' alt="Colorful abstract painting" style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', paddingBottom: '30px' }} />
             </Grid>
             <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'}}>
               <Box sx={{ textAlign: 'center' }}>
