@@ -74,7 +74,7 @@ const Login = () => {
               <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 5, mb: 1, height: '60px', fontSize: '15px' }}>
                 Login
               </Button>
-              <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 6, height: '60px', fontSize: '15px', color: 'black', borderColor: 'black' }}>
+              <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 6, height: '60px', fontSize: '15px',    color: darkMode ? 'white' : 'black',  borderColor: darkMode ? 'white' : 'black', }}>
                 <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
