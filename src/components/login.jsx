@@ -77,6 +77,9 @@ const Login = () => {
               <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 6, height: '60px', fontSize: '15px',    color: darkMode ? 'white' : 'black',  borderColor: darkMode ? 'white' : 'black', }}>
                 <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
               </Button>
+              <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 6, height: '60px', fontSize: '15px',    color: darkMode ? 'white' : 'black',  borderColor: darkMode ? 'white' : 'black', }}>
+                <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
+              </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography variant="body1" color="gray">Don't have an account yet?</Typography>
                 
