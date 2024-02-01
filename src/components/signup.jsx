@@ -1,13 +1,20 @@
-import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment, createTheme, CssBaseline, ThemeProvider, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Signup = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [passwordValidationError, setPasswordValidationError] = useState("");
+  const [repeatPasswordValidationError, setRepeatPasswordValidationError] = useState("");
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
@@ -19,6 +26,67 @@ const Signup = () => {
     },
   });
  
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const toggleRepeatPasswordVisibility = () => {
+    setShowRepeatPassword((prevShowRepeatPassword) => !prevShowRepeatPassword);
+  };
+
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    setPassword(newPassword);
+    validatePassword(newPassword);
+  };
+
+  const handleRepeatPasswordChange = (event) => {
+    const newRepeatPassword = event.target.value;
+    setRepeatPassword(newRepeatPassword);
+    validateRepeatPassword(newRepeatPassword);
+  };
+
+  const validatePassword = (passwordToValidate) => {
+    const hasMinimumLength = passwordToValidate.length >= 8;
+    const hasUppercase = /[A-Z]/.test(passwordToValidate);
+    const hasLowercase = /[a-z]/.test(passwordToValidate);
+    const hasNumber = /\d/.test(passwordToValidate);
+    const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(passwordToValidate);
+
+    let passwordError = "";
+
+    if (!hasMinimumLength) {
+      passwordError = "Password must be at least 8 characters.";
+    } else if (!hasUppercase) {
+      passwordError = "Password must contain at least one uppercase letter.";
+    } else if (!hasLowercase) {
+      passwordError = "Password must contain at least one lowercase letter.";
+    } else if (!hasNumber) {
+      passwordError = "Password must contain at least one number.";
+    } else if (!hasSpecialCharacter) {
+      passwordError = "Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>).";
+    }
+
+    setPasswordValidationError(passwordError);
+  };
+
+  const validateRepeatPassword = (repeatPasswordToValidate) => {
+    let repeatPasswordError = "";
+
+    if (password !== repeatPasswordToValidate) {
+      repeatPasswordError = "Passwords do not match.";
+    }
+    setRepeatPasswordValidationError(repeatPasswordError);
+  };
+
+  const handleCreateAccount = () => {
+    if  (password !== repeatPassword || passwordValidationError !== "" || repeatPasswordValidationError !== "")  {
+      
+      return;
+    }
+
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -50,13 +118,18 @@ const Signup = () => {
             <TextField
               label='Password'
               placeholder="Password"
-              type='password'
+              type={showPassword ? 'text' : 'password'}
               fullWidth
               sx={{ mt: 2, mb: 2 }}
+              error={passwordValidationError !== ""}
+      helperText={passwordValidationError}
+      onChange={handlePasswordChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <LockOpenOutlinedIcon />
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                        {showPassword ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
+                      </IconButton>
                   </InputAdornment>
                 ),
               }}
@@ -64,13 +137,18 @@ const Signup = () => {
             <TextField
               label='Repeat Password'
               placeholder="Password"
-              type='password'
+              type={showRepeatPassword ? 'text' : 'password'}
               fullWidth
               sx={{ mb: 1 }}
+              error={repeatPasswordValidationError !== ""}
+      helperText={repeatPasswordValidationError}
+      onChange={handleRepeatPasswordChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <LockOpenOutlinedIcon />
+                    <IconButton onClick={toggleRepeatPasswordVisibility} edge="end">
+                        {showRepeatPassword ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
+                      </IconButton>
                   </InputAdornment>
                 ),
               }}

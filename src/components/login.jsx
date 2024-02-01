@@ -1,8 +1,9 @@
-import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment,CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { Paper, Grid, TextField, Button, Box, Typography, Link, InputAdornment,CssBaseline, ThemeProvider, createTheme, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
 import Signup from "./signup";
@@ -10,6 +11,7 @@ import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleGoogleSignIn = () => {
     window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
@@ -24,6 +26,10 @@ const Login = () => {
       mode: darkMode ? 'dark' : 'light',
     },
   });
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -55,13 +61,15 @@ const Login = () => {
               <TextField
                 label='Password'
                 placeholder="Password"
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 fullWidth
                 sx={{ mt: 2, mb: 2 }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <LockOpenOutlinedIcon />
+                      <IconButton onClick={togglePasswordVisibility} edge="end">
+                        {showPassword ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
+                      </IconButton>
                     </InputAdornment>
                   ),
                 }}
