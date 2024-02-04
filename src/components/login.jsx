@@ -12,6 +12,10 @@ import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [passwordValidationError, setPasswordValidationError] = useState("");
+  const [repeatPasswordValidationError, setRepeatPasswordValidationError] = useState("");
 
   const handleGoogleSignIn = () => {
     window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
@@ -31,6 +35,44 @@ const Login = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    setPassword(newPassword);
+    validatePassword(newPassword);
+  };
+
+  const validatePassword = (passwordToValidate) => {
+    const hasMinimumLength = passwordToValidate.length >= 8;
+    const hasUppercase = /[A-Z]/.test(passwordToValidate);
+    const hasLowercase = /[a-z]/.test(passwordToValidate);
+    const hasNumber = /\d/.test(passwordToValidate);
+    const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(passwordToValidate);
+
+    let passwordError = "";
+
+    if (!hasMinimumLength) {
+      passwordError = "Password must be at least 8 characters.";
+    } else if (!hasUppercase) {
+      passwordError = "Password must contain at least one uppercase letter.";
+    } else if (!hasLowercase) {
+      passwordError = "Password must contain at least one lowercase letter.";
+    } else if (!hasNumber) {
+      passwordError = "Password must contain at least one number.";
+    } else if (!hasSpecialCharacter) {
+      passwordError = "Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>).";
+    }
+
+    setPasswordValidationError(passwordError);
+  };
+
+  const handleCreateAccount = () => {
+    if  (password !== repeatPassword || passwordValidationError !== "" || repeatPasswordValidationError !== "")  {
+      
+      return;
+    }
+
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,10 +80,16 @@ const Login = () => {
         <Paper elevation={10} style={paperStyle}>
           <Grid container  justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs={12} sm={6}>
-              <img src='/image/dev2.gif' alt="Colorful abstract painting" style={{ width: '100%',  height: 'auto', objectFit: 'cover', borderRadius: '230px', maxHeight: '70vh', paddingBottom: '30px' }} />
+          <div style={{  height: '100vh', width: '100%', overflow: 'hidden' }}>
+              <img src='/image/dev2.gif' alt="Colorful abstract painting" style={{  width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '230px',
+                    maxHeight: '70vh',}} />
+                    </div>
             </Grid>
-            <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column'}}>
-              <Box sx={{ textAlign: 'center' }}>
+            <Grid item xs={12} sm={6} style={{ ...gridStyle, flexDirection: 'column',  overflow: 'hidden', height: '100vh',}}>
+              <Box sx={{ textAlign: 'center',  mt: 1 }}>
                 <Typography variant="h3" sx={{ mb: 2 }}>Hello again!</Typography>
                 <Typography variant="h6" color="gray" sx={{mb: 3}}>It's great to have you back back</Typography>
               </Box>
@@ -64,6 +112,9 @@ const Login = () => {
                 type={showPassword ? 'text' : 'password'}
                 fullWidth
                 sx={{ mt: 2, mb: 2 }}
+                error={passwordValidationError !== ""}
+      helperText={passwordValidationError}
+      onChange={handlePasswordChange}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -74,7 +125,7 @@ const Login = () => {
                   ),
                 }}
               />
-              <Box sx={{ textAlign: 'right', mt: 1 }}>
+              <Box sx={{ textAlign: 'right', mb:-2 }}>
                 <Link component={RouterLink} to="/resetPassword" underline="none" sx={{ fontSize: '18px' }}>
                   Reset Password
                 </Link>
@@ -82,10 +133,10 @@ const Login = () => {
               <Button type='submit' color='primary' fullWidth variant="contained" sx={{ mt: 5, mb: 1, height: '60px', fontSize: '15px' }}>
                 Login
               </Button>
-              <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 6, height: '60px', fontSize: '15px',    color: darkMode ? 'white' : 'black',  borderColor: darkMode ? 'white' : 'black', }}>
+              <Button variant="outlined" fullWidth onClick={handleGoogleSignIn} sx={{ mt: 1, mb: 3, height: '60px', fontSize: '15px',    color: darkMode ? 'white' : 'black',  borderColor: darkMode ? 'white' : 'black', }}>
                 <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
               </Button>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
                 <Typography variant="body1" color="gray">Don't have an account yet?</Typography>
                 
                   <Box sx={{ ml: 2 }}>
