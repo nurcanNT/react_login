@@ -71,10 +71,24 @@ const Signup = () => {
   };
 
   const validateRepeatPassword = (repeatPasswordToValidate) => {
+    const hasMinimumLength = repeatPasswordToValidate.length >= 8;
+    const hasUppercase = /[A-Z]/.test(repeatPasswordToValidate);
+    const hasLowercase = /[a-z]/.test(repeatPasswordToValidate);
+    const hasNumber = /\d/.test(repeatPasswordToValidate);
+    const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(repeatPasswordToValidate);
+
     let repeatPasswordError = "";
 
-    if (password !== repeatPasswordToValidate) {
-      repeatPasswordError = "Passwords do not match.";
+    if (!hasMinimumLength) {
+      repeatPasswordError = "Password must be at least 8 characters.";
+    } else if (!hasUppercase) {
+      repeatPasswordError = "Password must contain at least one uppercase letter.";
+    } else if (!hasLowercase) {
+      repeatPasswordError = "Password must contain at least one lowercase letter.";
+    } else if (!hasNumber) {
+      repeatPasswordError = "Password must contain at least one number.";
+    } else if (!hasSpecialCharacter) {
+      repeatPasswordError = "Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>).";
     }
     setRepeatPasswordValidationError(repeatPasswordError);
   };
