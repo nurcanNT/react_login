@@ -6,7 +6,6 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
-import Signup from "./signup";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Login = () => {
