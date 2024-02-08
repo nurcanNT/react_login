@@ -1,6 +1,5 @@
 import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment, createTheme, CssBaseline, ThemeProvider, IconButton } from "@mui/material";
 import React, { useState } from "react";
-import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -91,14 +90,6 @@ const Signup = () => {
       repeatPasswordError = "Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>).";
     }
     setRepeatPasswordValidationError(repeatPasswordError);
-  };
-
-  const handleCreateAccount = () => {
-    if  (password !== repeatPassword || passwordValidationError !== "" || repeatPasswordValidationError !== "")  {
-      
-      return;
-    }
-
   };
 
   return (

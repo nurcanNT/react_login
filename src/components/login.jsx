@@ -5,16 +5,16 @@ import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlin
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
-import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
+import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordValidationError, setPasswordValidationError] = useState("");
-  const [repeatPasswordValidationError, setRepeatPasswordValidationError] = useState("");
+  const [emailValidationError, setEmailValidationError] = useState("");
 
   const handleGoogleSignIn = () => {
     window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
@@ -64,12 +64,16 @@ const Login = () => {
     setPasswordValidationError(passwordError);
   };
 
-  const handleCreateAccount = () => {
-    if  (password !== repeatPassword || passwordValidationError !== "" || repeatPasswordValidationError !== "")  {
-      
-      return;
-    }
+  const validateEmail = (emailToValidate) => {
+    const isValidEmail = /\S+@\S+\.\S+/.test(emailToValidate);
 
+    setEmailValidationError(isValidEmail ? "" : "Invalid email address");
+  };
+
+  const handleEmailChange = (event) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+    validateEmail(newEmail);
   };
 
   return (
@@ -97,6 +101,9 @@ const Login = () => {
                 placeholder="Email address"
                 type='email'
                 fullWidth
+                error={emailValidationError !== ""}
+                helperText={emailValidationError}
+                onChange={handleEmailChange}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
