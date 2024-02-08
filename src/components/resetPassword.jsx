@@ -1,8 +1,6 @@
 import { Paper, Grid, TextField, Button, Link, Box, Typography, InputAdornment, ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import React, { useState } from "react";
-import { FaGoogle } from 'react-icons/fa';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import { paperStyle, gridStyle } from "./LoginStyles";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
