@@ -49,7 +49,7 @@ const ResetPassword = () => {
               Reset Password
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="body1" color="gray">Already have an account?</Typography>
+              <Typography variant="body1" color="gray" sx={{ textDecoration: 'underline' }}> Already have an account?</Typography>
               <Box sx={{ ml: 2 }}>
                 <Link href="/login" underline="none">
                   Log in
