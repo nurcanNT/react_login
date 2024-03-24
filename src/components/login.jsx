@@ -143,7 +143,7 @@ const Login = () => {
                 <FaGoogle style={{ marginRight: 8, color: 'green' }} /> Sign in with Google
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
-                <Typography variant="body1" color="gray">Don't have an account yet?</Typography>
+                <Typography variant="body1" color="gray" sx={{ textDecoration: 'underline' }}>Don't have an account yet?</Typography>
                 
                   <Box sx={{ ml: 2 }}>
                     <Link component={RouterLink} to="/signup" underline="none">
