@@ -79,11 +79,11 @@ const Login = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <Grid container justifyContent="center"  alignItems="center" sx={{mt:9}}>
+    <Grid container justifyContent="center"  alignItems="center" sx={{mt:9,}}>
         <Paper elevation={10} style={paperStyle}>
           <Grid container  justifyContent="center" alignItems="center" spacing={2}>
-          <Grid item xs={12} sm={6}>
-          <div style={{  height: '100vh', width: '100%', overflow: 'hidden' }}>
+          <Grid item xs={12} sm={6} sx={{whiteSpace: 'nowrap', display: 'flex'}}>
+          <div style={{  height: '100vh', width: '100%', overflow: 'hidden',  }}>
               <img src='/image/dev2.gif' alt="Colorful abstract painting" style={{  width: '100%',
                     height: '100%',
                     objectFit: 'cover',
