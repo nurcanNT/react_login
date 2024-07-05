@@ -97,7 +97,7 @@ const Login = () => {
                 <Typography variant="h6" color="gray" sx={{mb: 3}}>It's great to have you back back</Typography>
               </Box>
               <TextField
-                label='Email Address'
+                label='Email Address.'
                 placeholder="Email address"
                 type='email'
                 fullWidth
