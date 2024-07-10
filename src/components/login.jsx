@@ -7,6 +7,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import { useDispatch } from "react-redux";
+import { login } from '../actions'
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -15,6 +17,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [passwordValidationError, setPasswordValidationError] = useState("");
   const [emailValidationError, setEmailValidationError] = useState("");
+  const dispatch = useDispatch();
 
   const handleGoogleSignIn = () => {
     window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
@@ -76,6 +79,11 @@ const Login = () => {
     validateEmail(newEmail);
   };
 
+  const handleLogin = () => {
+    const user = {  email };
+    dispatch(login(user));
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -103,7 +111,7 @@ const Login = () => {
                 fullWidth
                 error={emailValidationError !== ""}
                 helperText={emailValidationError}
-                onChange={handleEmailChange}
+                onChange={(e) => setEmail(e.target.value)}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
