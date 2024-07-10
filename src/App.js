@@ -3,8 +3,10 @@ import './App.css';
 import Signup from './components/signup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ResetPassword from './components/resetPassword';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <Router>
     <Routes>
