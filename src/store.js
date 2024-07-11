@@ -1,8 +1,11 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';
 import authReducer from './reducer/authReducer.js';
+import themeReducer from './reducer/themeReducer.js';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  theme: themeReducer
 });
 
 const saveToLocalStorage = (state) => {
@@ -30,6 +33,7 @@ const persistedState = loadFromLocalStorage();
 const store = createStore(
   rootReducer,
   persistedState,
+  applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

@@ -5,9 +5,10 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleDarkMode } from '../actions';
 
 const Signup = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [password, setPassword] = useState("");
@@ -15,9 +16,8 @@ const Signup = () => {
   const [passwordValidationError, setPasswordValidationError] = useState("");
   const [repeatPasswordValidationError, setRepeatPasswordValidationError] = useState("");
 
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  };
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const theme = createTheme({
     palette: {
@@ -182,7 +182,7 @@ const Signup = () => {
         </Grid>
       </Paper>
       <Box sx={{ position: 'absolute',top: '20px' }}>
-          <Button onClick={toggleDarkMode}>
+           <Button onClick={() => dispatch(toggleDarkMode())}>
           <SettingsBrightnessIcon sx={{mr:0.5}}/>{darkMode ? "Light Mode" : "Dark Mode"}
           
           </Button>

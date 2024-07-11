@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import { paperStyle, gridStyle } from "./LoginStyles";
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from '../actions';
 
 const ResetPassword = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  };
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const theme = createTheme({
     palette: {
@@ -60,7 +59,7 @@ const ResetPassword = () => {
         </Grid>
       </Paper>
       <Box sx={{ position: 'absolute',top: '20px' }}>
-          <Button onClick={toggleDarkMode}>
+          <Button onClick={ () => dispatch(toggleDarkMode())}>
           <SettingsBrightnessIcon sx={{mr:0.5}}/>  {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Box>
