@@ -8,16 +8,15 @@ import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import { useDispatch, useSelector } from "react-redux";
-import { login, toggleDarkMode } from '../actions';
+import { login, toggleDarkMode,  setEmail, setPassword, setEmailError, setPasswordError } from '../actions';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
   const [passwordValidationError, setPasswordValidationError] = useState("");
   const [emailValidationError, setEmailValidationError] = useState("");
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+  const { email, password, } = useSelector((state) => state.form);
 
   const theme = createTheme({
     palette: {
@@ -31,12 +30,6 @@ const Login = () => {
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
-    validatePassword(newPassword);
   };
 
   const validatePassword = (passwordToValidate) => {
@@ -60,19 +53,25 @@ const Login = () => {
       passwordError = "Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>).";
     }
 
-    setPasswordValidationError(passwordError);
+    dispatch(setPasswordError(passwordError));
   };
 
   const validateEmail = (emailToValidate) => {
     const isValidEmail = /\S+@\S+\.\S+/.test(emailToValidate);
 
-    setEmailValidationError(isValidEmail ? "" : "Invalid email address");
+    dispatch(setEmailError(isValidEmail ? "" : "Invalid email address"));
   };
 
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
-    setEmail(newEmail);
+    dispatch(setEmail(newEmail));
     validateEmail(newEmail);
+  };
+
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    dispatch(setPassword(newPassword));
+    validatePassword(newPassword);
   };
 
   const handleLogin = () => {
