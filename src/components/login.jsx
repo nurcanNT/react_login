@@ -7,31 +7,27 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { paperStyle, gridStyle } from "./LoginStyles";
 import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
-import { useDispatch } from "react-redux";
-import { login } from '../actions'
+import { useDispatch, useSelector } from "react-redux";
+import { login, toggleDarkMode } from '../actions';
 
 const Login = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordValidationError, setPasswordValidationError] = useState("");
   const [emailValidationError, setEmailValidationError] = useState("");
   const dispatch = useDispatch();
-
-  const handleGoogleSignIn = () => {
-    window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
-  };
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  };
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
     },
   });
+
+  const handleGoogleSignIn = () => {
+    window.location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S-670505543:1705259747687129&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTIQY8N70Sk2_qIPPA0n1W3TZUjTYTgoI-cOOJbsnQf2e8sUFNwVDqkZgOPNX';
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -163,7 +159,7 @@ const Login = () => {
           </Grid>
         </Paper>
         <Box sx={{ position: 'absolute',top: '20px' }}>
-          <Button onClick={toggleDarkMode}>
+          <Button onClick={() => dispatch(toggleDarkMode())}>
           <SettingsBrightnessIcon sx={{mr:0.5}}/> {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Box>
