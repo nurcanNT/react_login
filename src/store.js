@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { thunk } from 'redux-thunk';
 import authReducer from './reducer/authReducer.js';
 import themeReducer from './reducer/themeReducer.js';
+import formReducer from './reducer/formReducer.js';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  theme: themeReducer
+  theme: themeReducer,
+  form: formReducer,
 });
 
 const saveToLocalStorage = (state) => {
